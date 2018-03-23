@@ -1,5 +1,5 @@
 /**
-
+ @English Version By Jude.X.Zhu
  @Name：layer v3.1.1 Web弹层组件
  @Author：贤心
  @Site：http://layer.layui.com
@@ -28,7 +28,7 @@ var isLayui = window.layui && layui.define, $, win, ready = {
   }(),
 
   config: {}, end: {}, minIndex: 0, minLeft: [],
-  btn: ['&#x786E;&#x5B9A;', '&#x53D6;&#x6D88;'],
+  btn: ['OK', 'Cancel'],
 
   //五种原始层模式
   type: ['dialog', 'page', 'iframe', 'loading', 'tips'],
@@ -201,7 +201,7 @@ Class.pt.config = {
   shade: 0.3,
   fixed: true,
   move: doms[1],
-  title: '&#x4FE1;&#x606F;',
+  title: 'Message',
   offset: 'auto',
   area: 'auto',
   closeBtn: 1,
@@ -991,7 +991,7 @@ layer.prompt = function(options, yes){
   
   return layer.open($.extend({
     type: 1
-    ,btn: ['&#x786E;&#x5B9A;','&#x53D6;&#x6D88;']
+    ,btn: ['OK','Cancel']
     ,content: content
     ,skin: 'layui-layer-prompt' + skin('prompt')
     ,maxWidth: win.width()
@@ -1006,7 +1006,7 @@ layer.prompt = function(options, yes){
       if(value === ''){
         prompt.focus();
       } else if(value.length > (options.maxlength||500)) {
-        layer.tips('&#x6700;&#x591A;&#x8F93;&#x5165;'+ (options.maxlength || 500) +'&#x4E2A;&#x5B57;&#x6570;', prompt, {tips: 1});
+        layer.tips('Maximum input'+ (options.maxlength || 500) +'characters', prompt, {tips: 1});
       } else {
         yes && yes(value, index, prompt);
       }
@@ -1114,7 +1114,7 @@ layer.photos = function(options, loop, key){
     if(!loop) return;
     
   } else if (data.length === 0){
-    return layer.msg('&#x6CA1;&#x6709;&#x56FE;&#x7247;');
+    return layer.msg('No image');
   }
   
   //上一张
@@ -1259,9 +1259,9 @@ layer.photos = function(options, loop, key){
     }, options));
   }, function(){
     layer.close(dict.loadi);
-    layer.msg('&#x5F53;&#x524D;&#x56FE;&#x7247;&#x5730;&#x5740;&#x5F02;&#x5E38;<br>&#x662F;&#x5426;&#x7EE7;&#x7EED;&#x67E5;&#x770B;&#x4E0B;&#x4E00;&#x5F20;&#xFF1F;', {
+    layer.msg('The current picture address is abnormal <br> Do you want to continue viewing the next one?', {
       time: 30000, 
-      btn: ['&#x4E0B;&#x4E00;&#x5F20;', '&#x4E0D;&#x770B;&#x4E86;'], 
+      btn: ['Next', 'Quit'], 
       yes: function(){
         data.length > 1 && dict.imgnext(true,true);
       }
